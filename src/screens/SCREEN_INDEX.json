@@ -1,0 +1,65 @@
+[
+  {
+    "screenId": "eff93a797c584715b4ff3f1372161c8f",
+    "title": "Next Piece Preview",
+    "componentName": "NextPiecePreview",
+    "file": "src/screens/NextPiecePreview.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 9
+  },
+  {
+    "screenId": "3cde8660d0b84a87bd617d330f4e393f",
+    "title": "Pause Overlay",
+    "componentName": "PauseOverlay",
+    "file": "src/screens/PauseOverlay.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "aa7e56e83c30463e9cd3eecc40e05f2d",
+    "title": "Game Options",
+    "componentName": "GameOptions",
+    "file": "src/screens/GameOptions.tsx",
+    "buttons": 20,
+    "inputs": 3,
+    "links": 0
+  },
+  {
+    "screenId": "964dbcda33f24772afca5c7ba2381281",
+    "title": "Game Over",
+    "componentName": "GameOver",
+    "file": "src/screens/GameOver.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "61644b1688ba4720945c55025468354a",
+    "title": "Game Board",
+    "componentName": "GameBoard",
+    "file": "src/screens/GameBoard.tsx",
+    "buttons": 4,
+    "inputs": 0,
+    "links": 9
+  },
+  {
+    "screenId": "f289be24bde843b894eb5e249c402860",
+    "title": "Main Menu",
+    "componentName": "MainMenu",
+    "file": "src/screens/MainMenu.tsx",
+    "buttons": 7,
+    "inputs": 0,
+    "links": 0
+  },
+  {
+    "screenId": "22584d9f27b94df99fd0917a7b8d38c1",
+    "title": "Controls Help",
+    "componentName": "ControlsHelp",
+    "file": "src/screens/ControlsHelp.tsx",
+    "buttons": 3,
+    "inputs": 0,
+    "links": 9
+  }
+]
