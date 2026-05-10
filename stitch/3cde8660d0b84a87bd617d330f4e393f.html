@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TETRA STRIKE - Paused</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "on-primary-container": "#003751",
+                        "surface-container-low": "#171c20",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "on-secondary-fixed": "#191c1e",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-tint": "#89ceff",
+                        "secondary": "#c4c7c9",
+                        "primary": "#89ceff",
+                        "on-surface-variant": "#bec8d2",
+                        "on-secondary": "#2d3133",
+                        "outline-variant": "#3e4850",
+                        "secondary-fixed": "#e0e3e5",
+                        "surface-variant": "#30353a",
+                        "inverse-primary": "#006591",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "tertiary-container": "#de8712",
+                        "inverse-on-surface": "#2c3135",
+                        "outline": "#88929b",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#00344d",
+                        "on-primary-fixed": "#001e2f",
+                        "tertiary-fixed-dim": "#ffb86e",
+                        "on-secondary-fixed-variant": "#444749",
+                        "background": "#0f1418",
+                        "on-tertiary-fixed": "#2c1600",
+                        "primary-container": "#0ea5e9",
+                        "on-secondary-container": "#b6b9bb",
+                        "on-tertiary": "#492900",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-highest": "#30353a",
+                        "surface-dim": "#0f1418",
+                        "error-container": "#93000a",
+                        "on-surface": "#dee3e9",
+                        "primary-fixed-dim": "#89ceff",
+                        "primary-fixed": "#c9e6ff",
+                        "secondary-container": "#464a4b",
+                        "surface-container-high": "#252b2f",
+                        "on-background": "#dee3e9",
+                        "on-tertiary-container": "#4d2b00",
+                        "inverse-surface": "#dee3e9",
+                        "tertiary": "#ffb86e",
+                        "surface": "#0f1418",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1b2024",
+                        "surface-bright": "#353a3e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "touch-target-min": "48px",
+                        "lg": "24px",
+                        "playfield-cell": "32px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["geist"],
+                        "label-mono": ["jetbrainsMono"],
+                        "body-md": ["geist"],
+                        "display-score": ["geist"],
+                        "body-lg": ["geist"],
+                        "headline-lg": ["geist"],
+                        "headline-md": ["geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "label-mono": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-score": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden relative font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Simulated Game Background (Blurred Playfield Context) -->
+<div class="absolute inset-0 flex items-center justify-center p-md opacity-50">
+<div class="flex gap-lg">
+<!-- Hold Panel Mock -->
+<div class="hidden md:flex flex-col w-32 h-32 border border-outline-variant bg-surface-dim p-sm items-center justify-center">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Hold</span>
+<div class="w-16 h-16 bg-outline-variant/20 mt-sm"></div>
+</div>
+<!-- Main Playfield Mock -->
+<div class="w-[320px] h-[640px] bg-surface-dim border border-outline-variant relative overflow-hidden" style="background-image: linear-gradient(to right, #3e4850 1px, transparent 1px), linear-gradient(to bottom, #3e4850 1px, transparent 1px); background-size: 32px 32px; background-position: -1px -1px;">
+<!-- Simulated blocks -->
+<div class="absolute bottom-0 left-0 w-[64px] h-[32px] bg-primary/40 border border-primary"></div>
+<div class="absolute bottom-[32px] left-[32px] w-[96px] h-[32px] bg-tertiary/40 border border-tertiary"></div>
+<div class="absolute top-[320px] left-[128px] w-[64px] h-[64px] bg-secondary-fixed/40 border border-secondary-fixed"></div>
+</div>
+<!-- Next Panel Mock -->
+<div class="hidden md:flex flex-col w-32 h-64 border border-outline-variant bg-surface-dim p-sm items-center justify-start gap-md">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Next</span>
+<div class="w-16 h-16 bg-outline-variant/30"></div>
+<div class="w-16 h-16 bg-outline-variant/20"></div>
+<div class="w-16 h-16 bg-outline-variant/10"></div>
+</div>
+</div>
+</div>
+<!-- Pause Overlay (The Active Task) -->
+<div class="absolute inset-0 z-50 bg-background/85 backdrop-blur-md flex items-center justify-center p-md">
+<!-- Pause Menu Card -->
+<div class="bg-surface border border-outline-variant flex flex-col items-center justify-center p-xl w-full max-w-[360px] relative overflow-hidden">
+<!-- Decorative Tech Accents -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50 m-2"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50 m-2"></div>
+<!-- Title -->
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-widest uppercase mb-xl flex flex-col items-center gap-xs" style="text-shadow: 0 0 16px rgba(137, 206, 255, 0.4);">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">pause_circle</span>
+                Paused
+            </h1>
+<!-- Action Buttons Navigation Area -->
+<nav aria-label="Pause Menu" class="w-full flex flex-col gap-md">
+<!-- Resume Action -->
+<button class="w-full h-touch-target-min flex items-center justify-center gap-sm border border-primary bg-transparent text-primary hover:bg-primary hover:text-on-primary transition-all duration-200 font-label-mono text-label-mono uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined">play_arrow</span>
+                    Resume
+                </button>
+<!-- Restart Action -->
+<button class="w-full h-touch-target-min flex items-center justify-center gap-sm border border-outline-variant bg-transparent text-on-surface hover:bg-on-surface hover:text-surface transition-all duration-200 font-label-mono text-label-mono uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined">replay</span>
+                    Restart
+                </button>
+<!-- Settings Action -->
+<button class="w-full h-touch-target-min flex items-center justify-center gap-sm border border-outline-variant bg-transparent text-on-surface hover:bg-on-surface hover:text-surface transition-all duration-200 font-label-mono text-label-mono uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </button>
+<!-- Divider -->
+<div class="w-full h-px bg-outline-variant my-sm"></div>
+<!-- Main Menu Action -->
+<button class="w-full h-touch-target-min flex items-center justify-center gap-sm border border-outline-variant bg-transparent text-on-surface-variant hover:border-error hover:text-error hover:bg-error/10 transition-all duration-200 font-label-mono text-label-mono uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-surface">
+<span class="material-symbols-outlined">logout</span>
+                    Main Menu
+                </button>
+</nav>
+</div>
+</div>
+</body></html>

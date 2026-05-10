@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetra Strike</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "on-primary-container": "#003751",
+                    "surface-container-low": "#171c20",
+                    "on-primary-fixed-variant": "#004c6e",
+                    "on-secondary-fixed": "#191c1e",
+                    "surface-container-lowest": "#0a0f13",
+                    "surface-tint": "#89ceff",
+                    "secondary": "#c4c7c9",
+                    "primary": "#89ceff",
+                    "on-surface-variant": "#bec8d2",
+                    "on-secondary": "#2d3133",
+                    "outline-variant": "#3e4850",
+                    "secondary-fixed": "#e0e3e5",
+                    "surface-variant": "#30353a",
+                    "inverse-primary": "#006591",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "tertiary-container": "#de8712",
+                    "inverse-on-surface": "#2c3135",
+                    "outline": "#88929b",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#00344d",
+                    "on-primary-fixed": "#001e2f",
+                    "tertiary-fixed-dim": "#ffb86e",
+                    "on-secondary-fixed-variant": "#444749",
+                    "background": "#0f1418",
+                    "on-tertiary-fixed": "#2c1600",
+                    "primary-container": "#0ea5e9",
+                    "on-secondary-container": "#b6b9bb",
+                    "on-tertiary": "#492900",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#ffdcbd",
+                    "surface-container-highest": "#30353a",
+                    "surface-dim": "#0f1418",
+                    "error-container": "#93000a",
+                    "on-surface": "#dee3e9",
+                    "primary-fixed-dim": "#89ceff",
+                    "primary-fixed": "#c9e6ff",
+                    "secondary-container": "#464a4b",
+                    "surface-container-high": "#252b2f",
+                    "on-background": "#dee3e9",
+                    "on-tertiary-container": "#4d2b00",
+                    "inverse-surface": "#dee3e9",
+                    "tertiary": "#ffb86e",
+                    "surface": "#0f1418",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1b2024",
+                    "surface-bright": "#353a3e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "touch-target-min": "48px",
+                    "lg": "24px",
+                    "playfield-cell": "32px",
+                    "md": "16px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist", "sans-serif"],
+                    "label-mono": ["JetBrains Mono", "monospace"],
+                    "body-md": ["Geist", "sans-serif"],
+                    "display-score": ["Geist", "sans-serif"],
+                    "body-lg": ["Geist", "sans-serif"],
+                    "headline-lg": ["Geist", "sans-serif"],
+                    "headline-md": ["Geist", "sans-serif"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-mono": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-score": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { background-color: #0F172A; }
+        .panel { background-color: #111827; border: 1px solid #334155; }
+        .grid-bg { 
+            background-image: 
+                linear-gradient(to right, rgba(51, 65, 85, 0.5) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(51, 65, 85, 0.5) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .neon-glow-cyan { box-shadow: 0 0 15px rgba(6, 182, 212, 0.5); }
+        .neon-glow-purple { box-shadow: 0 0 15px rgba(168, 85, 247, 0.5); }
+        .ghost-piece { border: 1px dashed #06b6d4; background-color: rgba(6, 182, 212, 0.2); }
+    </style>
+</head>
+<body class="text-on-surface h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="bg-background dark:bg-background border-b border-outline-variant flex justify-between items-center w-full px-lg py-md h-16 shrink-0 z-10">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary tracking-tighter">
+            TETRA STRIKE
+        </div>
+<div class="flex items-center gap-4">
+<button aria-label="Pause Game" class="text-primary hover:text-primary transition-colors active:scale-95 duration-100 flex items-center justify-center w-touch-target-min h-touch-target-min">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button aria-label="Settings" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 flex items-center justify-center w-touch-target-min h-touch-target-min">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button aria-label="Help" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 flex items-center justify-center w-touch-target-min h-touch-target-min">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Side Nav Bar (Hidden on Mobile) -->
+<nav class="hidden lg:flex flex-col h-full py-lg bg-surface-container dark:bg-surface-container border-r border-outline-variant w-64 shrink-0 z-10">
+<div class="px-md mb-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A striking digital portrait avatar featuring glowing, generative geometric shapes against a minimalist background. High-key soft lighting creates a modern aesthetic. A sophisticated palette of deep blacks and pristine whites is punctuated by vibrant cyan accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkhTkBVPTxIPRxlaYjtbSyjrgfFJyEANg0EJEN_Img9DDr3s1t1fN4mIxVTkynt62Z-W7aYHkF4xmdveo0s1IpB5X5qq6kDgD0Yjva14ES2dlLV94lwQpROLuUZ8dwnw9srcOUXrJ4HArNp4eYfDhxy-rq42MEUayFrb1IvQIwdjviuMVlP6oyl2JaQrqHm8EgyMOWgX1ldHF2veXQf-Pkp9bUSzL8hDvOYCKmMfGHTChXBDV-RSDKINAKw1NOrg3ZlSqbtRCNOvOx"/>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-primary">OPERATOR</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant">LVL 42</div>
+</div>
+</div>
+<button class="w-full py-3 px-4 border border-outline-variant rounded text-on-surface font-label-mono text-label-mono hover:bg-surface-bright transition-all active:scale-95 text-center">
+                    UPGRADE PASS
+                </button>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 py-3 px-4 text-primary font-bold border-l-4 border-primary bg-surface-bright/20" href="#">
+<span class="material-symbols-outlined">sports_esports</span>
+<span class="font-label-mono text-label-mono">Battle</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-on-surface-variant border-l-4 border-transparent pl-4 hover:bg-surface-bright transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-label-mono text-label-mono">Sprint</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-on-surface-variant border-l-4 border-transparent pl-4 hover:bg-surface-bright transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-mono text-label-mono">Marathon</span>
+</a>
+<a class="flex items-center gap-4 py-3 px-4 text-on-surface-variant border-l-4 border-transparent pl-4 hover:bg-surface-bright transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label-mono text-label-mono">Leaderboard</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-4 py-3 px-4 text-on-surface-variant pl-4 hover:bg-surface-bright transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Game Area -->
+<main class="flex-1 flex flex-col items-center justify-center p-md md:p-lg relative overflow-y-auto">
+<div class="flex flex-col md:flex-row gap-md lg:gap-xl items-start justify-center max-w-6xl w-full">
+<!-- Left Panel: Hold & Next (Mobile stacks top, Desktop left) -->
+<div class="flex flex-row md:flex-col gap-md w-full md:w-auto order-2 md:order-1 justify-center">
+<!-- Hold -->
+<div class="panel p-4 rounded flex flex-col items-center min-w-[120px]">
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-4 tracking-widest uppercase">Hold</div>
+<div class="w-24 h-24 bg-surface-dim border border-outline-variant rounded flex items-center justify-center relative">
+<!-- L Piece in Hold -->
+<div class="grid grid-cols-3 gap-1 relative z-10 w-16 h-16 p-2">
+<div class="w-full h-full bg-[#f97316] col-start-1 row-start-2"></div>
+<div class="w-full h-full bg-[#f97316] col-start-1 row-start-1"></div>
+<div class="w-full h-full bg-[#f97316] col-start-2 row-start-2"></div>
+<div class="w-full h-full bg-[#f97316] col-start-3 row-start-2"></div>
+</div>
+</div>
+</div>
+<!-- Next Queue -->
+<div class="panel p-4 rounded flex flex-col items-center min-w-[120px]">
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-4 tracking-widest uppercase">Next</div>
+<div class="flex flex-col gap-4">
+<!-- Next 1 (100% opacity) -->
+<div class="w-24 h-24 bg-surface-dim border border-outline-variant rounded flex items-center justify-center">
+<div class="grid grid-cols-2 gap-1 w-12 h-12">
+<div class="w-full h-full bg-[#eab308]"></div>
+<div class="w-full h-full bg-[#eab308]"></div>
+<div class="w-full h-full bg-[#eab308]"></div>
+<div class="w-full h-full bg-[#eab308]"></div>
+</div>
+</div>
+<!-- Next 2 (50% opacity) -->
+<div class="w-20 h-20 bg-surface-dim border border-outline-variant rounded flex items-center justify-center opacity-50 hidden md:flex">
+<div class="flex flex-col gap-1 w-4 h-16">
+<div class="w-full h-full bg-[#06b6d4]"></div>
+<div class="w-full h-full bg-[#06b6d4]"></div>
+<div class="w-full h-full bg-[#06b6d4]"></div>
+<div class="w-full h-full bg-[#06b6d4]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Center: Playfield -->
+<div class="order-1 md:order-2 flex flex-col items-center">
+<div class="panel p-2 rounded">
+<!-- Playfield Grid (10x20 cells, cell size defined in config) -->
+<div class="w-[320px] h-[640px] bg-background relative overflow-hidden grid-bg border-2 border-outline-variant">
+<!-- Ghost Piece (Bottom) -->
+<div class="absolute bottom-[32px] left-[96px] w-[128px] h-[32px] ghost-piece z-0"></div>
+<!-- Active Piece (I shape, Cyan) -->
+<div class="absolute top-[160px] left-[96px] flex z-10 neon-glow-cyan">
+<div class="w-playfield-cell h-playfield-cell bg-[#06b6d4] border border-[#0891b2]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#06b6d4] border border-[#0891b2]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#06b6d4] border border-[#0891b2]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#06b6d4] border border-[#0891b2]"></div>
+</div>
+<!-- Stacked Pieces (Bottom) -->
+<div class="absolute bottom-0 left-0 w-full">
+<!-- Row 1 -->
+<div class="flex">
+<div class="w-playfield-cell h-playfield-cell bg-[#3b82f6] border border-[#2563eb]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#3b82f6] border border-[#2563eb]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-transparent"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#a855f7] border border-[#9333ea]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#a855f7] border border-[#9333ea]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#a855f7] border border-[#9333ea]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-transparent"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#22c55e] border border-[#16a34a]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#22c55e] border border-[#16a34a]"></div>
+<div class="w-playfield-cell h-playfield-cell bg-[#22c55e] border border-[#16a34a]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Stats -->
+<div class="flex flex-row md:flex-col gap-md w-full md:w-auto order-3 md:order-3 justify-center">
+<div class="panel p-6 rounded flex flex-col gap-6 min-w-[200px] w-full">
+<div>
+<div class="font-label-mono text-label-mono text-on-surface-variant mb-1 tracking-widest uppercase">Score</div>
+<div class="font-display-score text-display-score text-primary tabular-nums tracking-tighter">042,910</div>
+</div>
+<div class="h-px bg-outline-variant w-full"></div>
+<div class="flex justify-between items-center">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Level</div>
+<div class="font-headline-lg text-headline-lg text-secondary">12</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Lines</div>
+<div class="font-headline-lg text-headline-lg text-secondary">48</div>
+</div>
+<div class="flex justify-between items-center">
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">APM</div>
+<div class="font-headline-lg text-headline-lg text-[#22c55e]">35.2</div>
+</div>
+</div>
+<!-- Keyboard Controls Hint (Desktop only) -->
+<div class="hidden md:flex panel p-4 rounded flex-col gap-3 mt-auto">
+<div class="font-label-mono text-label-mono text-on-surface-variant text-center mb-2">CONTROLS</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface">Move</span>
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded border border-outline font-label-mono">← →</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface">Rotate</span>
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded border border-outline font-label-mono">↑ / Z X</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface">Soft Drop</span>
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded border border-outline font-label-mono">↓</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface">Hard Drop</span>
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded border border-outline font-label-mono">SPACE</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface">Hold</span>
+<span class="bg-surface-variant text-on-surface px-2 py-1 rounded border border-outline font-label-mono">C</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-md pb-safe h-touch-target-min bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-primary w-touch-target-min h-touch-target-min hover:text-secondary active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">videogame_asset</span>
+<span class="font-label-sm text-label-sm mt-1">Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target-min h-touch-target-min hover:text-secondary active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm mt-1">Social</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target-min h-touch-target-min hover:text-secondary active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-sm text-label-sm mt-1">Store</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target-min h-touch-target-min hover:text-secondary active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<!-- Mobile Touch Overlays (Placeholder for actual touch zones) -->
+<div class="md:hidden fixed bottom-16 left-0 w-full h-32 flex pointer-events-none z-40">
+<div class="w-1/2 h-full flex items-end justify-start p-4">
+<!-- D-Pad Placeholder Area -->
+</div>
+<div class="w-1/2 h-full flex items-end justify-end p-4">
+<!-- Action Buttons Placeholder Area -->
+</div>
+</div>
+</body></html>

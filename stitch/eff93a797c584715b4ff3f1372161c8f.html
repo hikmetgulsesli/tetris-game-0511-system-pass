@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Next Queue - TETRA STRIKE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "on-primary-container": "#003751",
+                    "surface-container-low": "#171c20",
+                    "on-primary-fixed-variant": "#004c6e",
+                    "on-secondary-fixed": "#191c1e",
+                    "surface-container-lowest": "#0a0f13",
+                    "surface-tint": "#89ceff",
+                    "secondary": "#c4c7c9",
+                    "primary": "#89ceff",
+                    "on-surface-variant": "#bec8d2",
+                    "on-secondary": "#2d3133",
+                    "outline-variant": "#3e4850",
+                    "secondary-fixed": "#e0e3e5",
+                    "surface-variant": "#30353a",
+                    "inverse-primary": "#006591",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "tertiary-container": "#de8712",
+                    "inverse-on-surface": "#2c3135",
+                    "outline": "#88929b",
+                    "on-error-container": "#ffdad6",
+                    "on-primary": "#00344d",
+                    "on-primary-fixed": "#001e2f",
+                    "tertiary-fixed-dim": "#ffb86e",
+                    "on-secondary-fixed-variant": "#444749",
+                    "background": "#0f1418",
+                    "on-tertiary-fixed": "#2c1600",
+                    "primary-container": "#0ea5e9",
+                    "on-secondary-container": "#b6b9bb",
+                    "on-tertiary": "#492900",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#ffdcbd",
+                    "surface-container-highest": "#30353a",
+                    "surface-dim": "#0f1418",
+                    "error-container": "#93000a",
+                    "on-surface": "#dee3e9",
+                    "primary-fixed-dim": "#89ceff",
+                    "primary-fixed": "#c9e6ff",
+                    "secondary-container": "#464a4b",
+                    "surface-container-high": "#252b2f",
+                    "on-background": "#dee3e9",
+                    "on-tertiary-container": "#4d2b00",
+                    "inverse-surface": "#dee3e9",
+                    "tertiary": "#ffb86e",
+                    "surface": "#0f1418",
+                    "error": "#ffb4ab",
+                    "surface-container": "#1b2024",
+                    "surface-bright": "#353a3e",
+                    "tetromino-i": "#00ffff",
+                    "tetromino-j": "#0000ff",
+                    "tetromino-l": "#ff7f00",
+                    "tetromino-o": "#ffff00",
+                    "tetromino-s": "#00ff00",
+                    "tetromino-t": "#800080",
+                    "tetromino-z": "#ff0000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "touch-target-min": "48px",
+                    "lg": "24px",
+                    "playfield-cell": "32px",
+                    "md": "16px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist", "sans-serif"],
+                    "label-mono": ["JetBrains Mono", "monospace"],
+                    "body-md": ["Geist", "sans-serif"],
+                    "display-score": ["Geist", "sans-serif"],
+                    "body-lg": ["Geist", "sans-serif"],
+                    "headline-lg": ["Geist", "sans-serif"],
+                    "headline-md": ["Geist", "sans-serif"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-mono": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-score": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .neon-glow-i { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
+        .neon-glow-j { box-shadow: 0 0 5px rgba(0, 0, 255, 0.3); }
+        .neon-glow-l { box-shadow: 0 0 5px rgba(255, 127, 0, 0.3); }
+        .neon-glow-o { box-shadow: 0 0 5px rgba(255, 255, 0, 0.3); }
+        .neon-glow-s { box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); }
+        .neon-glow-t { box-shadow: 0 0 5px rgba(128, 0, 128, 0.3); }
+        .neon-glow-z { box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); }
+        
+        .tetromino-cell {
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#0F172A] text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background border-b border-outline-variant full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-lg py-md">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary tracking-tighter">
+                TETRA STRIKE
+            </div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 flex items-center justify-center w-touch-target-min h-touch-target-min focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-background rounded">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 flex items-center justify-center w-touch-target-min h-touch-target-min focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-background rounded">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container border-r border-outline-variant docked left-0 h-full w-64 hidden lg:flex flex-col h-full py-lg z-30">
+<div class="px-md mb-lg flex items-center gap-sm">
+<div class="w-12 h-12 bg-surface-variant rounded-full overflow-hidden border border-outline-variant flex-shrink-0">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A stylized, high-contrast avatar image suitable for a cyberpunk gaming profile. The image features neon lighting accents against a dark background. The mood is intense and futuristic. Professional studio lighting highlights the sharp features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiFpqZu6qtMeazHrhXmNGDl-du1XsuJkiZS0cxfiMIOaSGBdYgPsmj4S4zGGq7f0n3UYZ_sogJmOMUAIrzPt4c71oIie-Q8UmmteQ9yW2KDki0pwDpUMAnf9JlVGMKXHnnB-GKXEjYb3JVz006px7xq1beRWTaHpOAlSQ5xT5mpzPyCHBzOv4338bBbaUlPPkO2RsCqb3gD5zYWJRxpJ_SHfeodpWlnFp5aBXtiS_UNVIrhXyt7dVLgv6dYz_2fFUxQQ-dMEwS2xH4"/>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-primary truncate">OPERATOR</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant">LVL 42</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-unit">
+<a class="text-primary font-bold border-l-4 border-primary pl-4 py-sm flex items-center gap-sm font-label-mono text-label-mono hover:bg-surface-bright transition-all active:translate-x-1 duration-200 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:-outline-offset-2" href="#">
+<span class="material-symbols-outlined">sports_esports</span>
+                    Battle
+                </a>
+<a class="text-on-surface-variant pl-4 py-sm flex items-center gap-sm font-label-mono text-label-mono hover:bg-surface-bright transition-all active:translate-x-1 duration-200 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:-outline-offset-2 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">timer</span>
+                    Sprint
+                </a>
+<a class="text-on-surface-variant pl-4 py-sm flex items-center gap-sm font-label-mono text-label-mono hover:bg-surface-bright transition-all active:translate-x-1 duration-200 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:-outline-offset-2 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+                    Marathon
+                </a>
+<a class="text-on-surface-variant pl-4 py-sm flex items-center gap-sm font-label-mono text-label-mono hover:bg-surface-bright transition-all active:translate-x-1 duration-200 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:-outline-offset-2 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+                    Leaderboard
+                </a>
+</div>
+<div class="px-md mt-auto space-y-md">
+<button class="w-full bg-transparent border border-outline-variant text-[#F8FAFC] hover:bg-[#F8FAFC] hover:text-[#0F172A] py-sm px-md rounded font-label-mono text-label-mono uppercase transition-colors focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-surface-container">
+                    UPGRADE PASS
+                </button>
+<a class="text-on-surface-variant pl-4 py-sm flex items-center gap-sm font-label-mono text-label-mono hover:bg-surface-bright transition-all active:translate-x-1 duration-200 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:-outline-offset-2 border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 p-md lg:p-lg flex items-start justify-center lg:justify-start">
+<!-- Next Queue Sidebar Panel -->
+<aside class="w-full max-w-[200px] bg-[#111827] border border-[#334155] rounded-DEFAULT p-md flex flex-col gap-md">
+<h2 class="font-label-mono text-label-mono text-on-surface uppercase tracking-wider text-center border-b border-[#334155] pb-sm">Next Queue</h2>
+<div class="flex flex-col items-center gap-lg pt-sm">
+<!-- Immediate Next Piece (100% Opacity) -->
+<div class="flex justify-center items-center w-24 h-24">
+<!-- 'T' Tetromino -->
+<div class="grid grid-cols-3 grid-rows-2 gap-[1px]">
+<div class="tetromino-cell col-start-2 row-start-1 bg-tetromino-t neon-glow-t"></div>
+<div class="tetromino-cell col-start-1 row-start-2 bg-tetromino-t neon-glow-t"></div>
+<div class="tetromino-cell col-start-2 row-start-2 bg-tetromino-t neon-glow-t"></div>
+<div class="tetromino-cell col-start-3 row-start-2 bg-tetromino-t neon-glow-t"></div>
+</div>
+</div>
+<!-- 2nd Piece in Queue (50% Opacity) -->
+<div class="flex justify-center items-center w-20 h-20 opacity-50">
+<!-- 'L' Tetromino -->
+<div class="grid grid-cols-3 grid-rows-2 gap-[1px]">
+<div class="tetromino-cell col-start-3 row-start-1 bg-tetromino-l"></div>
+<div class="tetromino-cell col-start-1 row-start-2 bg-tetromino-l"></div>
+<div class="tetromino-cell col-start-2 row-start-2 bg-tetromino-l"></div>
+<div class="tetromino-cell col-start-3 row-start-2 bg-tetromino-l"></div>
+</div>
+</div>
+<!-- 3rd Piece in Queue (50% Opacity) -->
+<div class="flex justify-center items-center w-20 h-20 opacity-50">
+<!-- 'I' Tetromino -->
+<div class="grid grid-cols-4 grid-rows-1 gap-[1px]">
+<div class="tetromino-cell bg-tetromino-i"></div>
+<div class="tetromino-cell bg-tetromino-i"></div>
+<div class="tetromino-cell bg-tetromino-i"></div>
+<div class="tetromino-cell bg-tetromino-i"></div>
+</div>
+</div>
+<!-- 4th Piece in Queue (50% Opacity) -->
+<div class="flex justify-center items-center w-20 h-20 opacity-50">
+<!-- 'O' Tetromino -->
+<div class="grid grid-cols-2 grid-rows-2 gap-[1px]">
+<div class="tetromino-cell bg-tetromino-o"></div>
+<div class="tetromino-cell bg-tetromino-o"></div>
+<div class="tetromino-cell bg-tetromino-o"></div>
+<div class="tetromino-cell bg-tetromino-o"></div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Placeholder for Playfield to give context -->
+<div class="hidden md:flex ml-lg flex-1 max-w-2xl h-[800px] bg-[#111827] border border-[#334155] rounded-DEFAULT items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzQxNTUiIHN0cm9rZS1vcGFjaXR5PSIwLjUiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] opacity-20"></div>
+<p class="font-label-mono text-label-mono text-on-surface-variant z-10 uppercase">Playfield Canvas Context</p>
+</div>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant shadow-lg fixed bottom-0 w-full z-50 lg:hidden flex justify-around items-center px-md pb-safe h-touch-target-min">
+<a class="flex flex-col items-center justify-center text-primary hover:text-secondary active:scale-90 transition-transform flex-1 h-full focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-inset" href="#">
+<span class="material-symbols-outlined mb-1">videogame_asset</span>
+<span class="font-label-sm text-label-sm">Play</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary active:scale-90 transition-transform flex-1 h-full focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-inset" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary active:scale-90 transition-transform flex-1 h-full focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-inset" href="#">
+<span class="material-symbols-outlined mb-1">shopping_cart</span>
+<span class="font-label-sm text-label-sm">Store</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary active:scale-90 transition-transform flex-1 h-full focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-inset" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>

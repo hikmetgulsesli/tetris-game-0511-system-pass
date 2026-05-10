@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Game Options - TETRA STRIKE</title>
+<!-- Google Fonts: Geist & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "on-primary-container": "#003751",
+                        "surface-container-low": "#171c20",
+                        "on-primary-fixed-variant": "#004c6e",
+                        "on-secondary-fixed": "#191c1e",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-tint": "#89ceff",
+                        "secondary": "#c4c7c9",
+                        "primary": "#89ceff",
+                        "on-surface-variant": "#bec8d2",
+                        "on-secondary": "#2d3133",
+                        "outline-variant": "#3e4850",
+                        "secondary-fixed": "#e0e3e5",
+                        "surface-variant": "#30353a",
+                        "inverse-primary": "#006591",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "tertiary-container": "#de8712",
+                        "inverse-on-surface": "#2c3135",
+                        "outline": "#88929b",
+                        "on-error-container": "#ffdad6",
+                        "on-primary": "#00344d",
+                        "on-primary-fixed": "#001e2f",
+                        "tertiary-fixed-dim": "#ffb86e",
+                        "on-secondary-fixed-variant": "#444749",
+                        "background": "#0f1418",
+                        "on-tertiary-fixed": "#2c1600",
+                        "primary-container": "#0ea5e9",
+                        "on-secondary-container": "#b6b9bb",
+                        "on-tertiary": "#492900",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#ffdcbd",
+                        "surface-container-highest": "#30353a",
+                        "surface-dim": "#0f1418",
+                        "error-container": "#93000a",
+                        "on-surface": "#dee3e9",
+                        "primary-fixed-dim": "#89ceff",
+                        "primary-fixed": "#c9e6ff",
+                        "secondary-container": "#464a4b",
+                        "surface-container-high": "#252b2f",
+                        "on-background": "#dee3e9",
+                        "on-tertiary-container": "#4d2b00",
+                        "inverse-surface": "#dee3e9",
+                        "tertiary": "#ffb86e",
+                        "surface": "#0f1418",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1b2024",
+                        "surface-bright": "#353a3e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "touch-target-min": "48px",
+                        "lg": "24px",
+                        "playfield-cell": "32px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist", "sans-serif"],
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "body-md": ["Geist", "sans-serif"],
+                        "display-score": ["Geist", "sans-serif"],
+                        "body-lg": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"],
+                        "headline-md": ["Geist", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "label-mono": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-score": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Geist', sans-serif;
+            /* Cyberpunk Grid Overlay */
+            background-image: linear-gradient(to right, rgba(51, 65, 85, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(51, 65, 85, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 8px;
+            border-radius: 2px;
+            background: #89ceff; /* primary */
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 8px rgba(137, 206, 255, 0.6);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #3e4850; /* outline-variant */
+            border-radius: 2px;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]:focus::-webkit-slider-thumb {
+            outline: 2px solid #dee3e9; /* on-surface */
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Sub-page Header (Navigation Suppressed as per Task-Focused rule) -->
+<header class="w-full flex items-center px-lg py-md border-b border-outline-variant bg-surface-container-low/80 backdrop-blur-md sticky top-0 z-10">
+<button aria-label="Back" class="flex items-center justify-center w-10 h-10 rounded hover:bg-surface-variant transition-colors focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-background group">
+<span class="material-symbols-outlined text-primary group-hover:-translate-x-1 transition-transform">arrow_back</span>
+</button>
+<h1 class="ml-sm font-headline-md text-headline-md text-primary tracking-tighter uppercase">Configuration</h1>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-5xl mx-auto px-md md:px-lg py-xl flex flex-col gap-lg">
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg">
+<!-- Panel 1: AUDIO (Col span 4) -->
+<section class="md:col-span-4 bg-surface-container border border-outline-variant rounded p-lg flex flex-col gap-lg shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
+<div class="flex items-center gap-sm pb-sm border-b border-surface-variant">
+<span class="material-symbols-outlined text-primary">graphic_eq</span>
+<h2 class="font-label-mono text-label-mono text-on-surface uppercase">Audio Telemetry</h2>
+</div>
+<!-- Master Volume Slider -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="master-vol">Master Output</label>
+<span class="font-label-mono text-label-mono text-primary">85%</span>
+</div>
+<input class="w-full" id="master-vol" max="100" min="0" type="range" value="85"/>
+</div>
+<!-- SFX Toggle -->
+<div class="flex justify-between items-center p-sm rounded hover:bg-surface-variant transition-colors group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface">SFX Modules</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Feedback sounds</span>
+</div>
+<!-- Active Toggle -->
+<button aria-checked="true" class="w-12 h-6 rounded-full bg-primary relative flex items-center px-1 focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-surface-container shadow-[0_0_10px_rgba(137,206,255,0.2)]" role="switch">
+<div class="w-4 h-4 rounded-full bg-on-primary absolute right-1 transform transition-transform"></div>
+</button>
+</div>
+<!-- Music Toggle -->
+<div class="flex justify-between items-center p-sm rounded hover:bg-surface-variant transition-colors group cursor-pointer">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface">BGM Stream</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Synthwave tracks</span>
+</div>
+<!-- Inactive Toggle -->
+<button aria-checked="false" class="w-12 h-6 rounded-full bg-surface-variant border border-outline-variant relative flex items-center px-1 focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-surface-container" role="switch">
+<div class="w-4 h-4 rounded-full bg-on-surface absolute left-1 transform transition-transform"></div>
+</button>
+</div>
+</section>
+<!-- Panel 2: GAMEPLAY (Col span 8) -->
+<section class="md:col-span-8 bg-surface-container border border-outline-variant rounded p-lg flex flex-col gap-lg shadow-[0_4px_24px_rgba(0,0,0,0.2)] relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -right-20 -top-20 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<div class="flex items-center gap-sm pb-sm border-b border-surface-variant relative z-10">
+<span class="material-symbols-outlined text-primary">speed</span>
+<h2 class="font-label-mono text-label-mono text-on-surface uppercase">Simulation Parameters</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-xl items-center relative z-10 flex-1 justify-center">
+<!-- Level Display -->
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Entry Level</span>
+<div class="font-display-score text-display-score text-primary tabular-nums tracking-tighter shadow-primary/20 drop-shadow-[0_0_15px_rgba(137,206,255,0.5)]">
+                            09
+                        </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Speed Multiplier: 1.8x</span>
+</div>
+<!-- Segmented Selector -->
+<div class="flex flex-col gap-sm flex-1 w-full max-w-sm">
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-mono text-label-mono text-on-surface-variant">LVL 1</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">LVL 15</span>
+</div>
+<div class="flex gap-unit h-8">
+<!-- Inactive Segments -->
+<button aria-label="Level 1" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 2" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 3" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 4" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 5" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 6" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 7" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 8" class="flex-1 bg-surface-variant border border-outline-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<!-- Active Segment -->
+<button aria-label="Level 9 (Selected)" class="flex-1 bg-primary rounded-sm shadow-[0_0_10px_rgba(137,206,255,0.6)] focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-surface-container"></button>
+<!-- Remaining Inactive -->
+<button aria-label="Level 10" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 11" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 12" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 13" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 14" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+<button aria-label="Level 15" class="flex-1 bg-surface-container-highest border border-surface-variant rounded-sm hover:bg-surface-bright focus:outline-none focus:ring-2 focus:ring-on-surface"></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Panel 3: CONTROLS (Col span 12) -->
+<section class="md:col-span-12 bg-surface-container border border-outline-variant rounded p-lg flex flex-col gap-md shadow-[0_4px_24px_rgba(0,0,0,0.2)]">
+<div class="flex items-center gap-sm pb-sm border-b border-surface-variant">
+<span class="material-symbols-outlined text-primary">gamepad</span>
+<h2 class="font-label-mono text-label-mono text-on-surface uppercase">Input Sensitivity (DAS/ARR)</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl pt-sm">
+<!-- DAS Slider -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<label class="font-label-mono text-label-mono text-on-surface" for="das-slider">Delayed Auto Shift (DAS)</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Time before auto-repeat begins</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">120ms</span>
+</div>
+<input class="w-full mt-2" id="das-slider" max="300" min="50" step="10" type="range" value="120"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline px-1">
+<span>Fast</span>
+<span>Slow</span>
+</div>
+</div>
+<!-- ARR Slider -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<label class="font-label-mono text-label-mono text-on-surface" for="arr-slider">Auto Repeat Rate (ARR)</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Speed of repetition</span>
+</div>
+<span class="font-label-mono text-label-mono text-primary">0ms</span>
+</div>
+<input class="w-full mt-2" id="arr-slider" max="50" min="0" step="1" type="range" value="0"/>
+<div class="flex justify-between font-label-sm text-label-sm text-outline px-1">
+<span>Instant</span>
+<span>Slow</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Actions -->
+<div class="flex flex-col sm:flex-row justify-end items-center gap-md mt-md pt-lg border-t border-outline-variant">
+<button class="w-full sm:w-auto px-lg py-sm font-label-mono text-label-mono text-error border border-error/50 rounded hover:bg-error/10 hover:border-error transition-colors focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-background h-touch-target-min flex items-center justify-center uppercase">
+                Reset to Default
+            </button>
+<button class="w-full sm:w-auto px-lg py-sm font-label-mono text-label-mono bg-primary text-on-primary rounded hover:bg-primary-fixed hover:shadow-[0_0_15px_rgba(137,206,255,0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-on-surface focus:ring-offset-2 focus:ring-offset-background h-touch-target-min flex items-center justify-center gap-sm uppercase shadow-[0_0_8px_rgba(137,206,255,0.2)]">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                Save Changes
+            </button>
+</div>
+</main>
+</body></html>

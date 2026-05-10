@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Game Over</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c4c7c9",
+                      "on-primary-container": "#003751",
+                      "surface-container-low": "#171c20",
+                      "on-primary-fixed-variant": "#004c6e",
+                      "on-secondary-fixed": "#191c1e",
+                      "surface-container-lowest": "#0a0f13",
+                      "surface-tint": "#89ceff",
+                      "secondary": "#c4c7c9",
+                      "primary": "#89ceff",
+                      "on-surface-variant": "#bec8d2",
+                      "on-secondary": "#2d3133",
+                      "outline-variant": "#3e4850",
+                      "secondary-fixed": "#e0e3e5",
+                      "surface-variant": "#30353a",
+                      "inverse-primary": "#006591",
+                      "on-tertiary-fixed-variant": "#693c00",
+                      "tertiary-container": "#de8712",
+                      "inverse-on-surface": "#2c3135",
+                      "outline": "#88929b",
+                      "on-error-container": "#ffdad6",
+                      "on-primary": "#00344d",
+                      "on-primary-fixed": "#001e2f",
+                      "tertiary-fixed-dim": "#ffb86e",
+                      "on-secondary-fixed-variant": "#444749",
+                      "background": "#0f1418",
+                      "on-tertiary-fixed": "#2c1600",
+                      "primary-container": "#0ea5e9",
+                      "on-secondary-container": "#b6b9bb",
+                      "on-tertiary": "#492900",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#ffdcbd",
+                      "surface-container-highest": "#30353a",
+                      "surface-dim": "#0f1418",
+                      "error-container": "#93000a",
+                      "on-surface": "#dee3e9",
+                      "primary-fixed-dim": "#89ceff",
+                      "primary-fixed": "#c9e6ff",
+                      "secondary-container": "#464a4b",
+                      "surface-container-high": "#252b2f",
+                      "on-background": "#dee3e9",
+                      "on-tertiary-container": "#4d2b00",
+                      "inverse-surface": "#dee3e9",
+                      "tertiary": "#ffb86e",
+                      "surface": "#0f1418",
+                      "error": "#ffb4ab",
+                      "surface-container": "#1b2024",
+                      "surface-bright": "#353a3e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "touch-target-min": "48px",
+                      "lg": "24px",
+                      "playfield-cell": "32px",
+                      "md": "16px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Geist", "sans-serif"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono", "monospace"
+                      ],
+                      "body-md": [
+                              "Geist", "sans-serif"
+                      ],
+                      "display-score": [
+                              "Geist", "sans-serif"
+                      ],
+                      "body-lg": [
+                              "Geist", "sans-serif"
+                      ],
+                      "headline-lg": [
+                              "Geist", "sans-serif"
+                      ],
+                      "headline-md": [
+                              "Geist", "sans-serif"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-score": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .bg-grid-pattern {
+              background-image: linear-gradient(to right, rgba(62, 72, 80, 0.1) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(62, 72, 80, 0.1) 1px, transparent 1px);
+              background-size: 32px 32px;
+          }
+          .neon-glow-error {
+              text-shadow: 0 0 10px rgba(255, 180, 171, 0.3), 0 0 20px rgba(255, 180, 171, 0.2);
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-lg relative overflow-hidden selection:bg-primary selection:text-on-primary">
+<!-- Subtle Grid Background -->
+<div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+<!-- Radial gradient for center focus -->
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0f1418_70%)] pointer-events-none"></div>
+<main class="relative z-10 w-full max-w-2xl flex flex-col items-center">
+<!-- Header -->
+<div class="mb-xl text-center">
+<h1 class="font-display-score text-display-score text-error uppercase tracking-widest neon-glow-error mb-sm">
+                Game Over
+            </h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase">
+                Grid sequence terminated
+            </p>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-2 gap-md w-full mb-xl">
+<!-- Final Score Main Card -->
+<div class="col-span-2 bg-surface-container border border-outline-variant p-xl flex flex-col items-center justify-center relative group">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary opacity-50 shadow-[0_0_8px_rgba(137,206,255,0.8)]"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-[0.2em] mb-sm">Final Score</span>
+<span class="font-display-score text-[64px] leading-none text-primary tracking-tighter">
+                    284,500
+                </span>
+</div>
+<!-- Max Level Card -->
+<div class="bg-surface-container border border-outline-variant p-lg flex flex-col items-center justify-center group hover:bg-surface-bright transition-colors duration-300">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase mb-sm">Max Level</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">18</span>
+</div>
+</div>
+<!-- Lines Cleared Card -->
+<div class="bg-surface-container border border-outline-variant p-lg flex flex-col items-center justify-center group hover:bg-surface-bright transition-colors duration-300">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase mb-sm">Lines Cleared</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">142</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-md w-full">
+<button class="flex-1 bg-primary/10 border border-primary text-primary px-lg py-md font-label-mono text-label-mono uppercase tracking-wider hover:bg-primary hover:text-on-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background flex items-center justify-center gap-sm group relative overflow-hidden">
+<span class="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></span>
+<span class="material-symbols-outlined text-[20px] relative z-10 group-hover:rotate-180 transition-transform duration-500">replay</span>
+<span class="relative z-10">Play Again</span>
+</button>
+<div class="flex gap-md flex-1">
+<button class="flex-1 bg-surface border border-outline-variant text-on-surface px-sm py-md font-label-mono text-label-mono uppercase tracking-wider hover:bg-surface-bright hover:border-outline transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-outline focus:ring-offset-2 focus:ring-offset-background flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span class="hidden sm:inline">Share</span>
+</button>
+<button class="flex-1 bg-surface border border-outline-variant text-on-surface px-sm py-md font-label-mono text-label-mono uppercase tracking-wider hover:bg-surface-bright hover:border-outline transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-outline focus:ring-offset-2 focus:ring-offset-background flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">menu</span>
+<span class="hidden sm:inline">Menu</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TETRA STRIKE - Main Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed-dim": "#c4c7c9",
+                "on-primary-container": "#003751",
+                "surface-container-low": "#171c20",
+                "on-primary-fixed-variant": "#004c6e",
+                "on-secondary-fixed": "#191c1e",
+                "surface-container-lowest": "#0a0f13",
+                "surface-tint": "#89ceff",
+                "secondary": "#c4c7c9",
+                "primary": "#89ceff",
+                "on-surface-variant": "#bec8d2",
+                "on-secondary": "#2d3133",
+                "outline-variant": "#3e4850",
+                "secondary-fixed": "#e0e3e5",
+                "surface-variant": "#30353a",
+                "inverse-primary": "#006591",
+                "on-tertiary-fixed-variant": "#693c00",
+                "tertiary-container": "#de8712",
+                "inverse-on-surface": "#2c3135",
+                "outline": "#88929b",
+                "on-error-container": "#ffdad6",
+                "on-primary": "#00344d",
+                "on-primary-fixed": "#001e2f",
+                "tertiary-fixed-dim": "#ffb86e",
+                "on-secondary-fixed-variant": "#444749",
+                "background": "#0f1418",
+                "on-tertiary-fixed": "#2c1600",
+                "primary-container": "#0ea5e9",
+                "on-secondary-container": "#b6b9bb",
+                "on-tertiary": "#492900",
+                "on-error": "#690005",
+                "tertiary-fixed": "#ffdcbd",
+                "surface-container-highest": "#30353a",
+                "surface-dim": "#0f1418",
+                "error-container": "#93000a",
+                "on-surface": "#dee3e9",
+                "primary-fixed-dim": "#89ceff",
+                "primary-fixed": "#c9e6ff",
+                "secondary-container": "#464a4b",
+                "surface-container-high": "#252b2f",
+                "on-background": "#dee3e9",
+                "on-tertiary-container": "#4d2b00",
+                "inverse-surface": "#dee3e9",
+                "tertiary": "#ffb86e",
+                "surface": "#0f1418",
+                "error": "#ffb4ab",
+                "surface-container": "#1b2024",
+                "surface-bright": "#353a3e"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "xl": "40px",
+                "touch-target-min": "48px",
+                "lg": "24px",
+                "playfield-cell": "32px",
+                "md": "16px",
+                "unit": "4px",
+                "sm": "8px",
+                "xs": "4px"
+        },
+        "fontFamily": {
+                "label-sm": [
+                        "Geist"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "body-md": [
+                        "Geist"
+                ],
+                "display-score": [
+                        "Geist"
+                ],
+                "body-lg": [
+                        "Geist"
+                ],
+                "headline-lg": [
+                        "Geist"
+                ],
+                "headline-md": [
+                        "Geist"
+                ]
+        },
+        "fontSize": {
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "1",
+                                "fontWeight": "500"
+                        }
+                ],
+                "label-mono": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-score": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+    body {
+        background-color: #0f1418; /* Using explicit hex for absolute base per guidance, though tailwind config has background: #0f1418 */
+        color: #dee3e9;
+    }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- Top Navigation AppBar - Using Brand Anchor JSON -->
+<header class="bg-background dark:bg-background border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-lg py-md docked full-width top-0 z-50">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary tracking-tighter">TETRA STRIKE</span>
+</div>
+<div class="flex items-center gap-md">
+<button aria-label="settings" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 p-sm rounded-DEFAULT hover:bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<button aria-label="help" class="text-on-surface-variant hover:text-primary transition-colors active:scale-95 duration-100 p-sm rounded-DEFAULT hover:bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex items-center justify-center relative p-lg md:p-xl z-10">
+<!-- Background Decor/Grid -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-20" style="background-image: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);"></div>
+<div class="absolute inset-0 z-0 pointer-events-none border border-outline-variant/30 rounded-xl m-lg" style="background-image: linear-gradient(to right, #334155 1px, transparent 1px), linear-gradient(to bottom, #334155 1px, transparent 1px); background-size: 32px 32px; opacity: 0.1;"></div>
+<div class="z-10 w-full max-w-md bg-[#111827] border border-[#334155] rounded-xl p-xl shadow-[0_0_30px_rgba(14,165,233,0.1)] flex flex-col gap-lg items-center text-center relative overflow-hidden backdrop-blur-sm">
+<!-- Subtle glow behind menu -->
+<div class="absolute -top-20 -left-20 w-40 h-40 bg-primary opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -right-20 w-40 h-40 bg-tertiary opacity-10 rounded-full blur-3xl"></div>
+<div class="mb-xl">
+<h1 class="font-display-score text-display-score text-primary tracking-tighter" style="text-shadow: 0 0 10px rgba(137, 206, 255, 0.5);">TETRA<br/>STRIKE</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-sm tracking-widest uppercase">System Initialized</p>
+</div>
+<div class="flex flex-col gap-md w-full max-w-xs">
+<!-- Start Game - Primary Action -->
+<button class="group relative w-full h-touch-target-min flex items-center justify-center border border-[#334155] bg-transparent text-[#F8FAFC] font-label-mono text-label-mono uppercase tracking-widest transition-all duration-200 hover:bg-[#F8FAFC] hover:text-[#0F172A] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-[#111827] overflow-hidden">
+<span class="relative z-10 flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                        Start Game
+                    </span>
+<!-- Hover Glow Effect -->
+<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="box-shadow: inset 0 0 15px rgba(137, 206, 255, 0.5);"></div>
+</button>
+<!-- Resume Game - Disabled State -->
+<button class="w-full h-touch-target-min flex items-center justify-center border border-[#334155]/50 bg-transparent text-on-surface-variant/50 font-label-mono text-label-mono uppercase tracking-widest cursor-not-allowed opacity-50 relative" disabled="">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">resume</span>
+                        Resume
+                    </span>
+<!-- Strike through effect for disabled visual (optional, sticking to requested style) -->
+</button>
+<!-- Options -->
+<button class="w-full h-touch-target-min flex items-center justify-center border border-[#334155] bg-transparent text-[#F8FAFC] font-label-mono text-label-mono uppercase tracking-widest transition-all duration-200 hover:bg-[#F8FAFC] hover:text-[#0F172A] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-[#111827]">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                        Options
+                    </span>
+</button>
+<!-- Help -->
+<button class="w-full h-touch-target-min flex items-center justify-center border border-[#334155] bg-transparent text-[#F8FAFC] font-label-mono text-label-mono uppercase tracking-widest transition-all duration-200 hover:bg-[#F8FAFC] hover:text-[#0F172A] active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#F8FAFC] focus:ring-offset-2 focus:ring-offset-[#111827]">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">school</span>
+                        Help
+                    </span>
+</button>
+</div>
+<div class="mt-xl w-full max-w-xs border-t border-[#334155] pt-lg">
+<!-- Exit -->
+<button class="w-full h-touch-target-min flex items-center justify-center bg-transparent text-error hover:text-error-container hover:bg-error/10 font-label-mono text-label-mono uppercase tracking-widest transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 focus:ring-offset-[#111827] rounded-DEFAULT">
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                        Exit
+                    </span>
+</button>
+</div>
+</div>
+</main>
+<!-- SideNavBar & BottomNavBar from JSON are suppressed based on Semantic Shell Mandate (Linear/Transactional/Menu Intent) -->
+</body></html>
